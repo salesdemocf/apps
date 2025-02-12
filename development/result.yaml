@@ -13,7 +13,7 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-#      - ../../../../values/values-common.yaml
+      - values-common.yaml
   destination:
     namespace: eva-development
     server: https://kubernetes.default.svc
