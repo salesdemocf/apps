@@ -6,14 +6,17 @@ metadata:
     codefresh.io/product: result
 spec:
   project: default
-  source:
-    repoURL: https://github.com/salesdemocf/configs.git
+  sources:
+  - repoURL: https://github.com/salesdemocf/configs.git
     targetRevision: HEAD
     path: environments/staging/result
     helm:
       valueFiles:
       - values.yaml
-      - values-common.yaml
+      - $common-values/common/result/values.yaml
+  - repoURL: https://github.com/salesdemocf/configs.git
+    targetRevision: HEAD
+    ref: common-values
   destination:
     namespace: eva-staging
     server: https://kubernetes.default.svc
