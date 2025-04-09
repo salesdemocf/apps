@@ -6,28 +6,18 @@ metadata:
     codefresh.io/product: result
 spec:
   project: default
+  source:
+    repoURL: https://github.com/salesdemocf/configs.git
+    targetRevision: HEAD
+    path: environments/development/result
   destination:
     namespace: eva-development
     server: https://kubernetes.default.svc
-  sources:
-    - path: environments/development/result
-      repoURL: https://github.com/salesdemocf/configs.git
-      targetRevision: HEAD
-      helm:
-        values: null
-        valueFiles:
-          - values.yaml
-        parameters: null
-    - ref: common-values
-      repoURL: https://github.com/salesdemocf/configs.git
-      targetRevision: HEAD
   syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
     syncOptions:
-      - PrunePropagationPolicy=foreground
-      - Replace=false
-      - PruneLast=false
-      - Validate=true
-      - CreateNamespace=false
-      - ApplyOutOfSyncOnly=false
-      - ServerSideApply=true
-      - RespectIgnoreDifferences=false
+      - Validate=false
+      - CreateNamespace=true
