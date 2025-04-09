@@ -1,24 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: result-stg-eva
+  name: result-dev-eva
   annotations:
     codefresh.io/product: result
 spec:
   project: default
-  sources:
-  - repoURL: https://github.com/salesdemocf/configs.git
+  source:
+    repoURL: https://github.com/salesdemocf/configs.git
     targetRevision: HEAD
-    path: environments/staging/result
-    helm:
-      valueFiles:
-      - values.yaml
-      - $common-values/common/result/values.yaml
-  - repoURL: https://github.com/salesdemocf/configs.git
-    targetRevision: HEAD
-    ref: common-values
+    path: environments/development/result
   destination:
-    namespace: eva-staging
+    namespace: eva-development
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
