@@ -10,6 +10,9 @@ spec:
     repoURL: https://github.com/salesdemocf/configs.git
     targetRevision: HEAD
     path: environments/production/result
+    helm:
+      valueFiles:
+      - /common/values.yaml
   destination:
     namespace: eva-production
     server: https://kubernetes.default.svc

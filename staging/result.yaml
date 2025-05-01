@@ -10,6 +10,9 @@ spec:
     repoURL: https://github.com/salesdemocf/configs.git
     targetRevision: HEAD
     path: environments/staging/result
+    helm:
+      valueFiles:
+      - /common/values.yaml
   destination:
     namespace: eva-staging
     server: https://kubernetes.default.svc
